@@ -1,0 +1,7 @@
+[versions]
+shodo = "1.2.0-SNAPSHOT"
+multiplehud = "1.0.1"
+
+[libraries]
+shodo = { group = "cc.irori", name = "shodo", version.ref = "shodo" }
+multiplehud = { group = "com.buuz135", name = "MultipleHUD", version.ref = "multiplehud" }

@@ -1,0 +1,21 @@
+{
+    "Group": "IroriPowered",
+    "Name": "Shodo-Signs",
+    "Version": "1.0.0",
+    "Website": "https://www.irori.cc/",
+    "Description": "Writable signs in Hytale using Shodo API",
+    "Main": "cc.irori.shodo.sign.ShodoSigns",
+    "Authors": [
+        {
+            "Name": "KabanFriends",
+            "Url": "https://github.com/KabanFriends"
+        }
+    ],
+    "ServerVersion": "*",
+    "IncludesAssetPack": true,
+    "Dependencies": {
+        "Buuz135:MultipleHUD": "*",
+        "IroriPowered:Shodo": "*"
+    },
+    "OptionalDependencies": {}
+}

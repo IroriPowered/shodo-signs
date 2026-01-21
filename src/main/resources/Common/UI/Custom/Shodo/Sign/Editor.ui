@@ -1,0 +1,46 @@
+$C = "../../Common.ui";
+
+$C.@PageOverlay {}
+
+$C.@Container #EditorRoot {
+    Anchor: (Width: 500, Height: 350);
+
+    #Title {
+        Group {
+            $C.@Title {
+               @Text = %shodoSigns.signEditor.title;
+            }
+        }
+    }
+
+    #Content {
+        LayoutMode: Top;
+
+        Group #SignPreview {
+            Background: #000000(0.4);
+            Anchor: (Bottom: 8, Height: 150);
+        }
+
+        $C.@TextField #SignInput {
+            @Anchor = (Bottom: 16);
+
+            PlaceholderText: %shodoSigns.signEditor.placeholder;
+            AutoFocus: true;
+        }
+
+        Group #Buttons {
+            LayoutMode: Top;
+
+            Group {
+                Anchor: (Bottom: 16, Height: 1);
+                Background: #5e512c;
+            }
+
+            $C.@TextButton #SaveButton {
+                Text: %server.customUI.saveChanges;
+            }
+        }
+    }
+}
+
+$C.@BackButton {}

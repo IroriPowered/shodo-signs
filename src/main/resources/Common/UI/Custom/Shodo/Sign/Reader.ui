@@ -1,0 +1,15 @@
+Group {
+    Anchor: (Top: -180);
+    LayoutMode: Center;
+
+    Group #SignTextContainer {
+        Background: #000000(0.4);
+        Anchor: (Width: 0, Height: 20);
+        Padding: (Horizontal: 10, Vertical: 10);
+        LayoutMode: Center;
+
+        Group #SignText {
+            Anchor: (Width: 0, Height: 0);
+        }
+    }
+}
