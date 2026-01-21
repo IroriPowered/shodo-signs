@@ -22,6 +22,8 @@ public class SignReaderHud extends CustomUIHud {
     private final TextBox textBox;
 
     private boolean isVisible = false;
+    private String signText;
+    private Color signColor;
 
     public SignReaderHud(Player player, PlayerRef playerRef) {
         super(playerRef);
@@ -57,13 +59,24 @@ public class SignReaderHud extends CustomUIHud {
         textBox.render(uiCommandBuilder, "#SignText");
     }
 
-    public void setIsVisible(boolean visible) {
-        this.isVisible = visible;
+    public boolean setIsVisible(boolean visible) {
+        if (this.isVisible != visible) {
+            this.isVisible = visible;
+            return true;
+        }
+        return false;
     }
 
-    public void setText(String text, Color color) {
-        textBox.typesetter().clear();
-        textBox.typesetter().addMessage(text, color);
+    public boolean setText(String text, Color color) {
+        if (!text.equals(signText) || !color.equals(signColor)) {
+            this.signText = text;
+            this.signColor = color;
+
+            textBox.typesetter().clear();
+            textBox.typesetter().addMessage(text, color);
+            return true;
+        }
+        return false;
     }
 
     public void update() {
