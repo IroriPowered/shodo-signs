@@ -33,20 +33,27 @@ public class SignWithText implements Component<ChunkStore> {
                     (sign, value) -> sign.lastEditor = value,
                     sign -> sign.lastEditor
             ).add()
+            .append(
+                    new KeyedCodec<Boolean>("Locked", Codec.BOOLEAN),
+                    (sign, value) -> sign.locked = value != null && value,
+                    sign -> sign.locked
+            ).add()
             .build();
 
     private String signText = null;
     private Color color = Color.WHITE;
     private UUID lastEditor = null;
+    private boolean locked = false;
 
     public Sign getData() {
-        return new Sign(signText, color, lastEditor);
+        return new Sign(signText, color, lastEditor, locked);
     }
 
     public void setData(Sign sign) {
         this.signText = sign.text();
         this.color = sign.color();
         this.lastEditor = sign.lastEditor();
+        this.locked = sign.locked();
     }
 
     public boolean hasText() {
@@ -60,6 +67,7 @@ public class SignWithText implements Component<ChunkStore> {
         clone.signText = this.signText;
         clone.color = this.color;
         clone.lastEditor = this.lastEditor;
+        clone.locked = this.locked;
         return clone;
     }
 

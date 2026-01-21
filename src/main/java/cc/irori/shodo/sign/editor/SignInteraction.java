@@ -29,7 +29,7 @@ public class SignInteraction extends SimpleBlockInteraction {
     @Override
     protected void interactWithBlock(@NonNullDecl World world, @NonNullDecl CommandBuffer<EntityStore> commandBuffer, @NonNullDecl InteractionType interactionType, @NonNullDecl InteractionContext interactionContext, @NullableDecl ItemStack itemStack, @NonNullDecl Vector3i blockPos, @NonNullDecl CooldownHandler cooldownHandler) {
         Sign sign = SignUtil.getSign(world, blockPos.getX(), blockPos.getY(), blockPos.getZ());
-        if (sign == null) {
+        if (sign == null || sign.locked()) {
             return;
         }
 

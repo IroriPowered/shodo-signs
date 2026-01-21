@@ -6,7 +6,8 @@ import java.util.UUID;
 public record Sign(
         String text,
         Color color,
-        UUID lastEditor
+        UUID lastEditor,
+        boolean locked
 ) {
 
     public boolean hasText() {

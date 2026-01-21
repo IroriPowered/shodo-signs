@@ -83,7 +83,11 @@ public class SignEditorPage extends InteractiveCustomUIPage<SignEditorPage.PageD
         );
 
         textBox.typesetter().clear();
-        textBox.typesetter().addMessage(signText);
+        if (signText != null && !signText.isEmpty()) {
+            textBox.typesetter().addMessage(signText);
+        } else {
+            textBox.typesetter().addMessage("下の入力欄にテキストを記入して保存ボタンを押すと、看板を編集できます。", Color.GRAY);
+        }
         textBox.render(uiCommandBuilder, "#SignPreview");
     }
 
@@ -98,7 +102,7 @@ public class SignEditorPage extends InteractiveCustomUIPage<SignEditorPage.PageD
 
         if (data.button != null && data.button.equals("SaveButton")) {
             SignUtil.updateSign(store.getExternalData().getWorld(), signPos.getX(), signPos.getY(), signPos.getZ(),
-                    new Sign(data.signText, Color.WHITE, playerRef.getUuid()));
+                    new Sign(data.signText, Color.WHITE, playerRef.getUuid(), false));
 
             textBox.typesetter().clear();
             textBox.typesetter().addMessage(signText);

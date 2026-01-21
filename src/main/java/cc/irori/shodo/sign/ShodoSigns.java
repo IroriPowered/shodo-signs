@@ -2,6 +2,7 @@ package cc.irori.shodo.sign;
 
 import cc.irori.shodo.BuiltInFontData;
 import cc.irori.shodo.FontData;
+import cc.irori.shodo.sign.command.SignLockCommand;
 import cc.irori.shodo.sign.editor.SignEditorPageSupplier;
 import cc.irori.shodo.sign.editor.SignInteraction;
 import cc.irori.shodo.sign.reader.SignReaderHud;
@@ -45,6 +46,7 @@ public class ShodoSigns extends JavaPlugin {
             signReaderHuds.remove(event.getPlayerRef().getUuid()));
         getCodecRegistry(OpenCustomUIInteraction.PAGE_CODEC).register("Shodo_Sign_Editor", SignEditorPageSupplier.class, SignEditorPageSupplier.CODEC);
         getCodecRegistry(Interaction.CODEC).register("ShodoSignInteraction", SignInteraction.class, SignInteraction.CODEC);
+        getCommandRegistry().registerCommand(new SignLockCommand());
     }
 
     public ComponentType<ChunkStore, SignWithText> getSignWithTextComponentType() {
