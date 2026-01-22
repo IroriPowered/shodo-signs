@@ -60,7 +60,11 @@ public class SignReaderSystem extends EntityTickingSystem<EntityStore> {
                 return;
             }
 
-            if (hud.setIsVisible(true) || hud.setText(sign.text(), sign.color())) {
+            boolean doUpdate = false;
+            if (hud.setIsVisible(true)) doUpdate = true;
+            if (hud.setText(sign.text(), sign.color())) doUpdate = true;
+
+            if (doUpdate) {
                 hud.update();
             }
         });
