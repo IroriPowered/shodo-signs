@@ -2,7 +2,6 @@ package cc.irori.shodo.sign.reader;
 
 import cc.irori.shodo.sign.ShodoSigns;
 import cc.irori.shodo.sign.Sign;
-import cc.irori.shodo.sign.util.Logs;
 import cc.irori.shodo.sign.util.SignUtil;
 import com.hypixel.hytale.component.*;
 import com.hypixel.hytale.component.query.Query;
@@ -16,8 +15,6 @@ import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import com.hypixel.hytale.server.core.util.TargetUtil;
 import org.checkerframework.checker.nullness.compatqual.NonNullDecl;
 import org.checkerframework.checker.nullness.compatqual.NullableDecl;
-
-import java.awt.*;
 
 public class SignReaderSystem extends EntityTickingSystem<EntityStore> {
 
@@ -45,7 +42,11 @@ public class SignReaderSystem extends EntityTickingSystem<EntityStore> {
             return;
         }
 
-        SignReaderHud hud = ShodoSigns.get().getOrCreateHud(player, playerRef);
+        SignReaderHud hud = ShodoSigns.get().getSignReaderHud(playerRef);
+        if (hud == null) {
+            return;
+        }
+
         Vector3i targetBlock = TargetUtil.getTargetBlock(playerEntityRef, 5, playerEntityRef.getStore());
         if (targetBlock == null) {
             hideHud(hud);
