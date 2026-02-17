@@ -39,7 +39,7 @@ public class ShodoSigns extends JavaPlugin {
     }
 
     @Override
-    protected void start() {
+    protected void setup() {
         signWithTextComponentType = getChunkStoreRegistry().registerComponent(SignWithText.class, "SignWithText", SignWithText.CODEC);
         getEntityStoreRegistry().registerSystem(new SignReaderSystem());
         getCodecRegistry(OpenCustomUIInteraction.PAGE_CODEC).register("Shodo_Sign_Editor", SignEditorPageSupplier.class, SignEditorPageSupplier.CODEC);
