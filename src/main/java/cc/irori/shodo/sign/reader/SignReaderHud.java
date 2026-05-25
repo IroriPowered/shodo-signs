@@ -79,6 +79,11 @@ public class SignReaderHud extends CustomUIHud {
     }
 
     public void update() {
-        player.getHudManager().addCustomHud(getPlayerRef(), this);
+        if (isVisible) {
+            player.getHudManager().addCustomHud(getPlayerRef(), this);
+            show();
+        } else {
+            player.getHudManager().removeCustomHud(getPlayerRef(), getKey());
+        }
     }
 }
