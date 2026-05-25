@@ -2,7 +2,6 @@ package cc.irori.shodo.sign.reader;
 
 import cc.irori.shodo.TextBox;
 import cc.irori.shodo.sign.ShodoSigns;
-import com.buuz135.mhud.MultipleHUD;
 import com.hypixel.hytale.server.core.entity.entities.Player;
 import com.hypixel.hytale.server.core.entity.entities.player.hud.CustomUIHud;
 import com.hypixel.hytale.server.core.ui.Anchor;
@@ -26,7 +25,7 @@ public class SignReaderHud extends CustomUIHud {
     private Color signColor;
 
     public SignReaderHud(Player player, PlayerRef playerRef) {
-        super(playerRef);
+        super(playerRef, "Shodo_Sign_Reader");
         this.player = player;
         this.textBox = TextBox.builder()
                 .setWidth(HUD_TEXTBOX_WIDTH)
@@ -80,6 +79,6 @@ public class SignReaderHud extends CustomUIHud {
     }
 
     public void update() {
-        MultipleHUD.getInstance().setCustomHud(player, getPlayerRef(), "Shodo_Sign_Reader", this);
+        player.getHudManager().addCustomHud(getPlayerRef(), this);
     }
 }

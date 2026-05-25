@@ -9,10 +9,8 @@ import com.hypixel.hytale.codec.KeyedCodec;
 import com.hypixel.hytale.codec.builder.BuilderCodec;
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
-import com.hypixel.hytale.math.vector.Vector3i;
 import com.hypixel.hytale.protocol.packets.interface_.CustomPageLifetime;
 import com.hypixel.hytale.protocol.packets.interface_.CustomUIEventBindingType;
-import com.hypixel.hytale.protocol.packets.interface_.Page;
 import com.hypixel.hytale.server.core.entity.entities.Player;
 import com.hypixel.hytale.server.core.entity.entities.player.pages.InteractiveCustomUIPage;
 import com.hypixel.hytale.server.core.ui.builder.EventData;
@@ -21,6 +19,7 @@ import com.hypixel.hytale.server.core.ui.builder.UIEventBuilder;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import org.checkerframework.checker.nullness.compatqual.NonNullDecl;
+import org.joml.Vector3i;
 
 import java.awt.*;
 
@@ -45,7 +44,7 @@ public class SignEditorPage extends InteractiveCustomUIPage<SignEditorPage.PageD
                 .build();
 
         Sign sign = SignUtil.getSign(playerRef.getReference().getStore().getExternalData().getWorld(),
-                signPos.getX(), signPos.getY(), signPos.getZ());
+                signPos.x(), signPos.y(), signPos.z());
         if (sign != null && sign.hasText()) {
             this.signText = sign.text();
         }
@@ -101,7 +100,7 @@ public class SignEditorPage extends InteractiveCustomUIPage<SignEditorPage.PageD
         PlayerRef playerRef = store.getComponent(ref, PlayerRef.getComponentType());
 
         if (data.button != null && data.button.equals("SaveButton")) {
-            SignUtil.updateSign(store.getExternalData().getWorld(), signPos.getX(), signPos.getY(), signPos.getZ(),
+            SignUtil.updateSign(store.getExternalData().getWorld(), signPos.x(), signPos.y(), signPos.z(),
                     new Sign(data.signText, Color.WHITE, playerRef.getUuid(), false));
 
             textBox.typesetter().clear();

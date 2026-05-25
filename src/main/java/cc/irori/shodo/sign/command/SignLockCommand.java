@@ -4,7 +4,6 @@ import cc.irori.shodo.sign.Sign;
 import cc.irori.shodo.sign.util.SignUtil;
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
-import com.hypixel.hytale.math.vector.Vector3i;
 import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.command.system.CommandContext;
 import com.hypixel.hytale.server.core.command.system.basecommands.AbstractPlayerCommand;
@@ -14,6 +13,7 @@ import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import com.hypixel.hytale.server.core.util.TargetUtil;
 import org.checkerframework.checker.nullness.compatqual.NonNullDecl;
 import org.checkerframework.checker.nullness.compatqual.NullableDecl;
+import org.joml.Vector3i;
 
 public class SignLockCommand extends AbstractPlayerCommand {
 
@@ -35,8 +35,8 @@ public class SignLockCommand extends AbstractPlayerCommand {
             return;
         }
 
-        Sign sign = SignUtil.getSign(world, targetBlock.getX(), targetBlock.getY(), targetBlock.getZ());
-        SignUtil.updateSign(world, targetBlock.getX(), targetBlock.getY(), targetBlock.getZ(), new Sign(
+        Sign sign = SignUtil.getSign(world, targetBlock.x(), targetBlock.y(), targetBlock.z());
+        SignUtil.updateSign(world, targetBlock.x(), targetBlock.y(), targetBlock.z(), new Sign(
                 sign.text(),
                 sign.color(),
                 sign.lastEditor(),

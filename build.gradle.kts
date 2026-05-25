@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "cc.irori"
-version = "1.0.7-SNAPSHOT"
+version = "1.0.8-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -16,5 +16,4 @@ repositories {
 dependencies {
     compileOnly(libs.hytale)
     compileOnly(libs.shodo)
-    compileOnly(libs.multiplehud)
 }
